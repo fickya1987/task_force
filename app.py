@@ -36,11 +36,11 @@ if uploaded_file:
         st.dataframe(filtered_data, use_container_width=True)
 
         # GPT-4o Integration for Analysis
-        st.subheader("Data Analysis with GPT-4o")
+        st.subheader("Pelindo task Force AI Analysis")
         analysis_query = st.text_area("Enter analysis description or query details:")
-        analysis_type = st.radio("Choose GPT-4o Analysis Type:", ["Data-Based Analysis", "Global GPT-4o Search"])
+        analysis_type = st.radio("Pilihan Pelindo AI:", ["Analisa Data dengan Pelindo AI", "Global Search Pelindo AI"])
 
-        if st.button("Generate AI Analysis") and analysis_query:
+        if st.button("Generate Pelindo AI") and analysis_query:
             try:
                 if analysis_type == "Data-Based Analysis":
                     # Data-based analysis
@@ -48,14 +48,14 @@ if uploaded_file:
                     response_data = openai.ChatCompletion.create(
                         model="gpt-4o",
                         messages=[
-                            {"role": "system", "content": "You are an experienced data analyst. Use Indonesian."},
+                            {"role": "system", "content": "Kamu adalah Data Analyst yang berpengalaman. Gunakan Bahasa Indonesia."},
                             {"role": "user", "content": prompt_data}
                         ],
                         max_tokens=2048,
                         temperature=1.0
                     )
                     result_data = response_data['choices'][0]['message']['content']
-                    st.write("#### Data-Based Analysis Result:")
+                    st.write("#### Hasil Pelindo AI:")
                     st.write(result_data)
                 else:
                     # Global GPT-4o search
@@ -63,14 +63,14 @@ if uploaded_file:
                     response_search = openai.ChatCompletion.create(
                         model="gpt-4o",
                         messages=[
-                            {"role": "system", "content": "You are an intelligent search engine. Use Indonesian."},
+                            {"role": "system", "content": "Kamu adalah Mesin pencarian yang hebat. Gunakan Bahasa Indonesia."},
                             {"role": "user", "content": prompt_search}
                         ],
                         max_tokens=2048,
                         temperature=1.0
                     )
                     result_search = response_search['choices'][0]['message']['content']
-                    st.write("#### Global GPT-4o Search Result:")
+                    st.write("#### Global Search Pelindo AI:")
                     st.write(result_search)
             except Exception as e:
                 st.error(f"Error generating analysis: {e}")
