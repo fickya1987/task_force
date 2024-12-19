@@ -9,7 +9,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Streamlit app title
-st.title("AI-Enhanced Data Analysis and Visualization")
+st.title("TKMP Task Force Pelindo AI")
 
 # File upload
 uploaded_file = st.file_uploader("Upload your CSV or Excel file:", type=["csv", "xlsx"])
