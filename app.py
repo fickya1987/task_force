@@ -18,9 +18,10 @@ if uploaded_file:
     try:
         # Read the file
         if uploaded_file.name.endswith(".csv"):
-            df = pd.read_csv(uploaded_file)
-        else:
-            df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
+else:
+    df = pd.read_excel(uploaded_file)
+
 
         st.write("### Uploaded Data Table")
         st.dataframe(df, use_container_width=True)
