@@ -18,7 +18,7 @@ if uploaded_file:
     try:
         # Read the file
         if uploaded_file.name.endswith(".csv"):
-            df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
+            df = pd.read_csv(uploaded_file, encoding='utf-8', on_bad_lines='skip')
         else:
             df = pd.read_excel(uploaded_file)
 
@@ -75,14 +75,8 @@ if uploaded_file:
                     st.write(result_search)
             except Exception as e:
                 st.error(f"Error generating analysis: {e}")
-
     except Exception as e:
         st.error(f"Error reading the file: {e}")
 else:
     st.warning("No file uploaded. Please upload a CSV or Excel file.")
 
-
-    except Exception as e:
-        st.error(f"Error reading the file: {e}")
-else:
-    st.warning("No file uploaded. Please upload a CSV or Excel file.")
