@@ -51,7 +51,7 @@ if uploaded_file:
                 try:
                     if analysis_type == "Analisa Data dengan Pelindo AI":
                         # Filter and prepare data for prompt
-                        filtered_data = df[['TaskForceID', 'InisiatifStrategi']].head(10)
+                        filtered_data = df[['TaskForceID', 'InisiatifStrategi', 'Progress', 'Target']].head(10)
                         prompt_data = filtered_data.to_csv(index=False)
 
                         # Create prompt for GPT-4
