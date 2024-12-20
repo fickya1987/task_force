@@ -80,3 +80,9 @@ if uploaded_file:
         st.error(f"Error reading the file: {e}")
 else:
     st.warning("No file uploaded. Please upload a CSV or Excel file.")
+
+
+    except Exception as e:
+        st.error(f"Error reading the file: {e}")
+else:
+    st.warning("No file uploaded. Please upload a CSV or Excel file.")
