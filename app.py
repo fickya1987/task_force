@@ -18,11 +18,11 @@ if uploaded_file:
     try:
         # Read the file
         if uploaded_file.name.endswith(".csv"):
-    df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
-else:
-    df = pd.read_excel(uploaded_file)
+            df = pd.read_csv(uploaded_file, encoding='utf-8', errors='replace')
+        else:
+            df = pd.read_excel(uploaded_file)
 
-
+        # Display uploaded data
         st.write("### Uploaded Data Table")
         st.dataframe(df, use_container_width=True)
 
@@ -36,8 +36,8 @@ else:
 
         st.dataframe(filtered_data, use_container_width=True)
 
-        # GPT-4o Integration for Analysis
-        st.subheader("Pelindo task Force AI Analysis")
+        # AI Analysis
+        st.subheader("Pelindo Task Force AI Analysis")
         analysis_query = st.text_area("Enter analysis description or query details:")
         analysis_type = st.radio("Pilihan Pelindo AI:", ["Analisa Data dengan Pelindo AI", "Global Search Pelindo AI"])
 
@@ -59,7 +59,7 @@ else:
                     st.write("#### Hasil Pelindo AI:")
                     st.write(result_data)
                 else:
-                    # Global GPT-4o search
+                    # Global search
                     prompt_search = f"Conduct an in-depth search on '{analysis_query}' using your global knowledge."
                     response_search = openai.ChatCompletion.create(
                         model="gpt-4o",
